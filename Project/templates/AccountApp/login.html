@@ -1,0 +1,29 @@
+{% extends 'FrontEndApp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block block1 %}
+    <title>login page</title>
+{% endblock %}
+
+
+{% block block2 %}
+<div class="container" style="width:30%">
+    <h1 style="text-align:center">Log In</h1>
+<form method="post" class="jumbotron">
+    {% csrf_token %}
+
+    Username:<input type="text" name="un" class="form-control"><br><br>
+    Password:<input type="password" name="ps" class="form-control"><br>
+
+    {% if messages %}
+            {% for msg in messages %}
+            {{ msg }}
+            {% endfor %}
+    {% endif %}
+
+    <input type="submit" value="Login" class="btn btn-info"><br><br>
+
+     <h5 style="text-align:center"><a href="{% url 'password_reset' %}">Forgot Password ?</a></h5>
+</form>
+    </div>
+{% endblock %}
